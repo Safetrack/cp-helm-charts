@@ -67,6 +67,8 @@ spec:
         volumeMounts:
         - name: jmx-config
           mountPath: /etc/jmx-kafka
+        - name: jaas-config
+                  mountPath: /etc/kafka
       {{- end }}
       - name: {{ template "cp-kafka.name" . }}-broker
         image: "{{ .Values.image }}:{{ .Values.imageTag }}"
@@ -103,6 +105,8 @@ spec:
               fieldPath: status.hostIP
         - name: KAFKA_HEAP_OPTS
           value: {{ .Values.heapOptions }}
+        - name: KAFKA_OPTS
+          value: {{ .Values.kafkaOptions }}
         - name: KAFKA_ZOOKEEPER_CONNECT
           value: {{ include "cp-kafka.cp-zookeeper.service-name" . | quote }}
         {{- range $key, $value := .Values.configurationOverrides }}
@@ -126,7 +130,7 @@ spec:
         - -exc
         - |
           export KAFKA_BROKER_ID=${HOSTNAME##*-} && \
-          export KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://${POD_IP}:9092{{ if kindIs "string" $advertisedListenersOverride }}{{ printf ",%s" $advertisedListenersOverride }}{{ end }} && \
+          export KAFKA_ADVERTISED_LISTENERS=SASL_PLAINTEXT://${POD_IP}:9092{{ if kindIs "string" $advertisedListenersOverride }}{{ printf ",%s" $advertisedListenersOverride }}{{ end }} && \
           exec /etc/confluent/docker/run
         volumeMounts:
         - name: datadir
