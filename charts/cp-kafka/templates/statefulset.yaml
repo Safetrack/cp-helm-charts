@@ -68,7 +68,7 @@ spec:
         - name: jmx-config
           mountPath: /etc/jmx-kafka
         - name: jaas-config
-                  mountPath: /etc/kafka
+          mountPath: /etc/kafka
       {{- end }}
       - name: {{ template "cp-kafka.name" . }}-broker
         image: "{{ .Values.image }}:{{ .Values.imageTag }}"
