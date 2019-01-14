@@ -136,7 +136,7 @@ spec:
         - name: datadir
           mountPath: /opt/kafka/data
         - name: jaas-config
-          mountPath: /etc/kafka/kafka_server_jaas.conf
+          mountPath: /
       {{- if .Values.imagePullSecrets }}
       imagePullSecrets:
 {{ toYaml .Values.imagePullSecrets | indent 8 }}
