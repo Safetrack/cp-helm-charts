@@ -54,7 +54,7 @@ serverPort: 2888
 leaderElectionPort: 3888
 clientPort: 2181
 
-zookeeperSaslEnabled: "FALSE"
+zookeeperSaslEnabled: 'FALSE'
 
 ## Persistent Volumes
 ## ref: https://kubernetes.io/docs/concepts/storage/persistent-volumes/
