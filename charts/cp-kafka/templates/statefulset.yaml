@@ -148,6 +148,9 @@ spec:
       - name: jmx-config
         configMap:
           name: {{ template "cp-kafka.fullname" . }}-jmx-configmap
+      - name: jaas-config
+        configMap:
+          name: {{ template "cp-kafka.fullname" . }}-jaas-configmap
       {{- end }}
       {{- if .Values.nodeSelector }}
       nodeSelector:
