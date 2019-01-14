@@ -133,10 +133,10 @@ spec:
           export KAFKA_ADVERTISED_LISTENERS=SASL_PLAINTEXT://${POD_IP}:9092{{ if kindIs "string" $advertisedListenersOverride }}{{ printf ",%s" $advertisedListenersOverride }}{{ end }} && \
           exec /etc/confluent/docker/run
         volumeMounts:
-        - name: jaas-config
-          mountPath: /etc/kafka
         - name: datadir
           mountPath: /opt/kafka/data
+        - name: jaas-config
+          mountPath: /etc/kafka/kafka_server_jaas.conf
       {{- if .Values.imagePullSecrets }}
       imagePullSecrets:
 {{ toYaml .Values.imagePullSecrets | indent 8 }}
