@@ -135,8 +135,8 @@ spec:
         volumeMounts:
         - name: datadir
           mountPath: /opt/kafka/data
-        - name: jaas-config
-          mountPath: /etc/kafka
+#        - name: jaas-config
+#          mountPath: /etc/kafka
       {{- if .Values.imagePullSecrets }}
       imagePullSecrets:
 {{ toYaml .Values.imagePullSecrets | indent 8 }}
