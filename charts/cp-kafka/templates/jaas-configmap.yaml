@@ -18,9 +18,9 @@ data:
         user_alice="alice-secret";
     };
 
-  Client {
-     org.apache.kafka.common.security.plain.PlainLoginModule required
-     username="admin"
-     password="admin-secret";
-  };
+    Client {
+        org.apache.kafka.common.security.plain.PlainLoginModule required
+        username="admin"
+        password="admin-secret";
+    };
 {{- end }}
