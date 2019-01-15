@@ -106,6 +106,12 @@ spec:
           value: "{{ .Values.clientPort }}"
         - name : ZOOKEEPER_SERVERS
           value: {{ template "cp-zookeeper.serverlist" . }}
+        - name : ZOOKEEPER_AUTHPROVIDER_1
+          value: "org.apache.zookeeper.server.auth.DigestAuthenticationProvider"
+        - name : ZOOKEEPER_JAASLOGINRENEW
+          value: "3600000"
+        - name : ZOOKEEPER_REQUIRECLIENTAUTHSCHEME
+          value: "sasl"
         # ZOOKEEPER_SERVER_ID is required just to pass cp-zookeeper ensure script for env check,
         # the value(metadata.mame) is not used and will be overwritten in command part
         - name: ZOOKEEPER_SERVER_ID
