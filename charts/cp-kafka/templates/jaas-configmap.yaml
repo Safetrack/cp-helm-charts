@@ -15,6 +15,7 @@ data:
         username="admin"
         password="admin-secret"
         user_admin="admin-secret"
+        user_bob="bob-secret"
         user_alice="alice-secret";
     };
 {{- end }}
